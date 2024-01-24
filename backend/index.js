@@ -4,11 +4,11 @@ const app = express()
 import './Database/connection.js'
 import stockRouter from "./Database/Router/stockRouter.js";
 app.use(cors())
-// app.use(cors({
-//     origin:['https://deploy-mern-1whq.vercel.app'],
-//     methods:['POST','GET','DELETE'],
-//     credentials:true
-//   }))
+app.use(cors({
+    origin:['https://deploy-mern-1whq.vercel.app'],
+    methods:['POST','GET','DELETE'],
+    credentials:true
+  }))
 const PORT= 5777;
 app.use(express.json());
 
