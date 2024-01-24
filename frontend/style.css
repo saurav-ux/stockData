@@ -1,0 +1,143 @@
+ body{
+    background-color: #191D28;
+}
+
+.logo{
+    color: #6CCACB;
+     font-size: 3em;
+    font-weight: bolder;
+   font-style: unset;
+ 
+}
+
+.teleImg{
+    width: 9%;
+} 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.3em;
+  }
+  
+  .mid {
+    display: flex;
+    align-items: center;
+  }
+  
+
+  .logo,
+  .telegram {
+    margin: 0 10px; /* Adjust as needed */
+    width: 12%;
+  }
+  .inr{
+    color: white;
+    padding: 10px;
+    background-color: #2E3241;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+  }
+
+  .midA{
+    margin: 13px;
+  }
+  .teleButton{
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    color: white;
+    background-color: #6CCACB;
+  }
+
+  .body1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.3em;
+  }
+  .per{
+    color: #6CCACB;
+    font-weight: bolder;
+    font-size: 2.5em;
+    margin-bottom: -7px;
+  }
+  .left{
+    display: flex;
+    text-align: center;
+  }
+  .right{
+    display: flex;
+    text-align: center;
+  }
+  .bestPrice{
+    color: #818389;
+    font-size: 2em;
+  }
+ .price{
+    color: white;
+    font-weight: bolder;
+    font-size: 5em;
+    margin-top: -17px;
+    margin-bottom: -7px;
+ }
+ .average{
+  color: #818389;
+  font-size: 1.3em;
+ }
+.left1{
+    margin-left: 40px;
+}
+.right1{
+    margin-right: 40px;
+}
+
+.middle{
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Optional: Add margin for spacing */
+    border: none;
+}
+
+th, td {
+    text-align: center;
+}
+
+th {
+    /* background-color: #f2f2f2; */
+    color: #818389;
+    font-size: 1.7em;
+    font-weight: bolder;
+    text-align: center;
+}
+.tdStyle{
+    text-align: center;
+    /* background-color: #2E3241; */
+    color: white;
+    font-size: 1em;
+    font-weight: bolder;
+  
+}
+td{
+  
+    
+}
+#stockDataTable th, #stockDataTable td {
+    border: none;
+    padding: 8px; 
+}
+#stockDataBody{
+    
+ padding: 20px;
+}
+
+
+
+
+  

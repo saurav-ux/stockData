@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Stock</title>
+</head>
+
+<body>
+    <div>
+        <div class="header">
+            <div class="logo">
+                HODLINFO
+            </div>
+            <div class="mid">
+                <div class="midA">
+                    <select class="inr" name="ETH" >
+                        <option>INR</option>
+                    </select>
+                </div>
+                <div class="midA">
+                    <select name="ETH" id="currencySelect" class="inr">
+                        <!-- Add options here -->
+                    </select>
+                </div>
+                <div class="midA">
+                    <button class="inr">BUY ETH</button>
+                </div>
+            </div>
+            <div class="telegram">
+                <button class="teleButton">
+                    <img src="tele.png" class="teleImg"> Connect Telegram 
+                </button>
+            </div>
+        </div>
+        <div class="body1">
+            <div class="left">
+              <div class="left1">
+                 <p class="per">0.05 %</p>
+                 <p class="average">5 Mins</p>
+              </div>
+              <div class="left1">
+                <p class="per">0.34 %</p>
+                <p class="average">1 Hour</p>
+              </div>
+            </div>
+            <div class="middle">
+            <div class="middle1">
+                <p class="bestPrice">Best Price to Trade</p>
+             
+               
+            </div>
+            <div class="middle1">
+                <p class="price">₹ 2,05,525</p>
+            </div>
+            <div class="middle1">
+                <p class="average">Average ETH/INR net price including commission</p>
+            </div>
+            
+            </div>
+            <div class="right">
+             <div class="right1">
+                <p class="per">3.32 %</p>
+                <p class="average">1 Day</p>
+             </div>
+             <div class="right1">
+                <p class="per">10.14 %</p>
+                <p class="average">7 Days</p>
+             </div>
+            
+            </div>
+        </div>
+        <div class="body2">
+            <table id="stockDataTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Platform</th>
+                        <th>Last Traded Price</th>
+                        <th>Buy</th>
+                        <th>Sell Price</th>
+                        <th>Base Unit</th>
+                    </tr>
+                </thead>
+                <tbody id="stockDataBody" class="tdStyle"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Use Axios to make a GET request to the API
+        axios.get("http://localhost:5777/stockData")
+            .then(response => {
+                // Handle the API response data here
+                //  console.log(response.data);
+
+                // Populate the select dropdown with options
+                const currencySelect = document.getElementById("currencySelect");
+                const stockDataBody = document.getElementById("stockDataBody");
+                // Check if response.data is an object
+                if (response.data && typeof response.data === 'object') {
+                    // Use Object.keys to get an array of currency names
+                    //  const currencies = Object.keys(response.data);
+                    const currencies = response.data?.data
+
+                    currencies.forEach((currency,index) => {
+                        //  console.log("curr", currency);
+                        const option = document.createElement("option");
+                        option.value = currency.name; // You may need to adjust this based on the structure of your API response
+                        option.text = currency.base_unit.toUpperCase();
+                        currencySelect.appendChild(option);
+                        const row = document.createElement("tr");
+                      //  <!-- row.style.backgroundColor = "red"; -->
+                      //  row.style.marginTop="0px"
+                        
+                        // Add cells for each column
+                        const cells = [
+                            document.createElement("td"),
+                            document.createElement("td"),
+                            document.createElement("td"),
+                            document.createElement("td"),
+                            document.createElement("td"),
+                            document.createElement("td")
+                        ];
+
+                        // Set the content of each cell
+                        cells[0].textContent = index + 1; // # (index + 1 since index starts from 0)
+                        cells[1].textContent = currency.name;
+                        cells[2].textContent = '₹ '+currency.last;
+                        cells[3].textContent ='₹ '+ currency.buy;
+                        cells[4].textContent = '₹ '+currency.sell;
+                        cells[5].textContent = currency.base_unit;
+
+                        // Append cells to the row
+                        cells.forEach(cell => row.appendChild(cell));
+
+                        // Append the row to the table body
+                        stockDataBody.appendChild(row);
+                    });
+                } else {
+                    console.error("Invalid data format:", response.data);
+                }
+            })
+            .catch(error => {
+                // Handle errors
+                console.error("Error fetching data:", error);
+            });
+
+           
+    </script>
+
+    <!-- ... your HTML code ... -->
+
+</body>
+
+</html>
